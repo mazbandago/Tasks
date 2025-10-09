@@ -1,27 +1,29 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query';
 import fetchTasks from '../Api';
+import Navbar from '../components/Navbar';
+import GeneralCard from '../components/GeneralCard';
+
+
 function HomePage() {
-
 const{data, loading, error} = useQuery({
-    queryKey: ["tasks"],
+    queryKey: ["results"],
     queryFn: fetchTasks,
-    staleTime: 60 * 1000 * 2
+    staleTime: 60 * 1000 * 2,
+   
 })
-
-console.log(data)
+const results = data?.results;
+console.log(results)
   return (
+
     <div>
+      <Navbar />
         <h1>My Tasks</h1>
         {loading && <p>Loading...</p>}
         {error && <p>Title: Validation failed</p>}
-        {data && data.length > 0 && (
-            data.map((task) => (
-                <div>
-                    <h2>{task.title}</h2>
-                    <img src={task.image_url} alt= {task.source_name} />
-                    <p>{task.description}</p>
-                </div>
+        {results && results.length > 0 && (
+            results.map((result) => (
+              <GeneralCard key={result.article_id} result={result}/>
             ))
         )}
     </div>
