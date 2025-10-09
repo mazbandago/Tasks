@@ -46,7 +46,7 @@ function DetailsPage() {
 
     // 4. Render the details
     return (
-        <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-400">
             <Navbar />
             <div className="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-xl mt-8 mb-8 border border-gray-100">
                 <img 

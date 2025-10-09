@@ -18,7 +18,7 @@ console.log(results)
 
     <div>
       <Navbar />
-        <h1>My Tasks</h1>
+        <h1 className='font-bold text-2xl mt-8 mb-4 text-gray-800 text-center'>My Tasks</h1>
         {loading && <p>Loading...</p>}
         {error && <p>Title: Validation failed</p>}
         {results && results.length > 0 && (
