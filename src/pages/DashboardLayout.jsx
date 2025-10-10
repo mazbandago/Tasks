@@ -8,7 +8,7 @@ function DashboardLayout() {
         <DashboardNav />
         <Outlet />
         
-        This is the dashboard page
+       
 
     </div>
   )

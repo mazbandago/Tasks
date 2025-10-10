@@ -11,17 +11,17 @@ function DetailsPage() {
     const articleId = id || null; 
 
     // 2. Use useQuery to get all data (leveraging the cache from HomePage)
-    const { data, isLoading, isError, error } = useQuery({
+    const { data:results, isLoading, isError, error } = useQuery({
         queryKey: ["results"], // Use the same key as HomePage to share cache
         queryFn: fetchTasks,
         staleTime: 60 * 1000 * 2, 
     });
 
-    const allArticles = data?.results;
+    // const allArticles = data?.results;
     
     // 3. Find the specific article using the unique article_id (string comparison)
     // We use && for short-circuiting: only run find() if allArticles exists.
-    const result = allArticles && allArticles.find((r) => r.article_id === articleId);
+    const result = results && results.find((r) => r.article_id === articleId);
 
     if (isLoading) {
         return <div className="p-10 text-center text-lg text-indigo-600">Loading Article Details...</div>;
