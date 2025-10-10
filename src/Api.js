@@ -7,6 +7,6 @@ async function fetchTasks (){
     if(result.status==='error'){
         throw new Error(`API validation failed:${result.message ||"Unknown error"}`);
     } 
-    return result;
+    return result.results;
 };
 export default fetchTasks;
