@@ -58,7 +58,7 @@ console.log(searchNews)
         </div>
       </div>
    
-        {isloading && <p className='flex items-center justify-center font-bold text-2xl text-center'>YOur article is loading.....</p>};
+        {isloading && <p className='flex items-center justify-center font-bold text-2xl text-center'>YOur article is loading.....</p>}
         {error && <p>Error: Failed to filter news articles</p>}
       <div>
         {filterNews && (
