@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+import { useQuery } from '@tanstack/react-query';
+import React, { useMemo, useState } from 'react'
+import fetchTasks from '../Api';
+import GeneralCard from '../components/GeneralCard';
+
 
 function FootballPage() {
   const[searchNews, setSearchNews] = useState("");
@@ -6,11 +10,32 @@ function FootballPage() {
 
   const categories = ["All","sports","politics","education"];
 
+  const{data:results, isloading,error} = useQuery({
+    queryKey: ["results"],
+    queryFn: fetchTasks,
+    staleTime:1000*60*2 
+  })
+  let filtered = results;
+
+  const filterNews = useMemo(() => {
+    if(selectCategory !=="All"){
+      filtered = filtered.filter((result) => result.category?.some(cate=>cate===selectCategory))
+    }
+    
+    if(searchNews){
+    const lowerCaseSearchNews= searchNews.toLowerCase();
+    filtered = filtered.filter(result => 
+    result.title?.toLowerCase().includes(lowerCaseSearchNews) ||
+    result.description?.toLowerCase().includes(lowerCaseSearchNews))
+    };
+    return filtered;
+
+  },[results,searchNews,selectCategory])
 
 console.log(searchNews)
 
   return (
-    <div className='min-h-screen bg-gray-50'>
+  <div className='min-h-screen bg-gray-300'>
     <div className="max-w-4xl mx-auto p-4 border-0">
       <h1 className='font-bold text-2xl text-gray-800 text-center mx-auto mb-8 mt-8'>Select News Articles Based on Category and Search Input</h1>
       <div className="mb-8 p-6 bg-white rounded-xl shadow-lg border border-gray-500">
@@ -32,8 +57,20 @@ console.log(searchNews)
           ))}
         </div>
       </div>
+   
+        {isloading && <p className='flex items-center justify-center font-bold text-2xl text-center'>YOur article is loading.....</p>};
+        {error && <p>Error: Failed to filter news articles</p>}
+      <div>
+        {filterNews && (
+          filterNews.map((result)=> (
+            <GeneralCard key={result.article_id} result={result}/>
+          ))
+        )}
+      </div>
+
     </div>
-    </div>
+  </div>
+
   )
 }
 
