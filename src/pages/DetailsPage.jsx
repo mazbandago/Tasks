@@ -14,7 +14,7 @@ function DetailsPage() {
     const { data:results, isLoading, isError, error } = useQuery({
         queryKey: ["results"], // Use the same key as HomePage to share cache
         queryFn: fetchTasks,
-        staleTime: 60 * 1000 * 2, 
+        staleTime: 60 * 1000, 
     });
 
     // const allArticles = data?.results;
@@ -34,11 +34,11 @@ function DetailsPage() {
     // Check if ID was missing or if article was not found
     if (!result) {
         return (
-            <div className="min-h-screen bg-gray-50">
+            <div className="min-h-screen  bg-gray-50">
                 <Navbar />
-                <div className="p-10 text-center text-xl text-red-700 mt-10 border border-red-300 bg-red-50 rounded-lg max-w-lg mx-auto shadow-md">
-                    <p className="mb-2 font-semibold">Article not found.</p>
-                    <p className="text-base text-gray-600">Please return to the <Link to="/" className="text-indigo-600 hover:underline">Home Page</Link>.</p>
+                <div className="flex justify-center items-center max-w-3xl  p-10 text-xl text-red-700 mt-10 border border-red-300 bg-red-50 rounded-lg  mx-auto shadow-md">
+                    <p className="mb-2 font-semibold w-full  ">Article not found.</p>
+                    {/* <p className="text-base text-gray-600">Please return to the <Link to="/" className="text-indigo-600 hover:underline">Home</Link>.</p> */}
                 </div>
             </div>
         );
