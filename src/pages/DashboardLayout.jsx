@@ -8,8 +8,6 @@ function DashboardLayout() {
         <DashboardNav />
         <Outlet />
         
-       
-
     </div>
   )
 }
