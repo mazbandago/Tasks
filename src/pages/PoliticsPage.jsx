@@ -6,4 +6,4 @@ function PoliticsPage() {
   )
 }
 
-export default PoliticsPage
+export default PoliticsPage;

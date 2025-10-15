@@ -13,8 +13,10 @@ function FootballPage() {
   const{data:results, isloading,error} = useQuery({
     queryKey: ["results"],
     queryFn: fetchTasks,
-    staleTime:1000*60
+    staleTime:1000*60*5,
+    cacheTime:1000*60*10
   })
+
   let filtered = results;
 
   const filterNews = useMemo(() => {
@@ -31,9 +33,6 @@ function FootballPage() {
     return filtered;
 
   },[results,searchNews,selectCategory])
-
-console.log(searchNews)
-
   return (
   <div className='min-h-screen bg-gray-300'>
     <div className="max-w-4xl mx-auto p-4 border-0">
@@ -58,8 +57,8 @@ console.log(searchNews)
         </div>
       </div>
    
-        {isloading && <p className='flex items-center justify-center font-bold text-2xl text-center'>YOur article is loading.....</p>}
-        {error && <p>Error: Failed to filter news articles</p>}
+        {isloading && <p className='p-12 mt-40 mx-auto w-lg font-bold text-2xl border rounded-2xl h-50 text-center shadow-xl/30 hover:shadow-amber-200 hover:bg-indigo-700'>YOur article is loading.....</p>}
+        {error && <p className='p-12 mt-40 mx-auto w-lg font-bold text-2xl border rounded-2xl h-50 text-center shadow-xl/30 hover:shadow-amber-200 hover:bg-indigo-700'>Error: Failed to filter news articles</p>}
       <div>
         {filterNews && (
           filterNews.map((result)=> (
