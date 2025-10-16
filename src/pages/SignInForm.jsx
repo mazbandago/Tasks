@@ -10,25 +10,27 @@ function SignInForm() {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    setFormData('')
+    setFormData({ fullName: "", email: "", password: "" })
     console.log(formData)
 
 
   }
 
   return (
-    <div>
-      <div className='bg-gray-300 min-h-screen'>
+  <>
+    <div className='bg-gray-300 min-h-screen'>
       <Navbar />
-      <form onSubmit={handleSubmit}>
-        <input type="text" name='fullName' value={formData.fullName} onChange={handleOnChange}/>
-        <input type="email" name='email' value={formData.email} onChange={handleOnChange}/>
-        <input type="password" name='password' value={formData.password} onChange={handleOnChange}/>
-        <input type="submit" />
-      </form>
+      <div className='p-4 mx-auto max-w-4xl'>
+        <h2 className='mt-6 font-bold text-2xl text-gray-900 text-center'>ENTER YOUR DETAILS TO LOGIN</h2>
+        <form onSubmit={handleSubmit} className='flex flex-col border-0 mt-10 bg-white shadow-lg rounded-xl p-6'>
+           <input type="text" name='fullName' value={formData.fullName} onChange={handleOnChange} required placeholder='Enter your full Name Here' className='p-3 border-1 mb-4 w-full rounded font-bold text-xl text-gray-900 focus:ring-gray-300 '/>
+           <input type="email" name='email' value={formData.email} onChange={handleOnChange} required placeholder='Enter Email' className='p-3 border-1 mb-4 w-full rounded font-bold text-xl text-gray-900 focus:ring-gray-300 '/>
+           <input type="password" name='password' value={formData.password} onChange={handleOnChange} required placeholder='Enter your Password Here' className='p-3 border-1 mb-4 w-full rounded font-bold text-xl text-gray-900 focus:ring-gray-300 '/>
+           <button type='submit' className='border rounded font-medium mx-auto my-3 p-2 bg-black text-white shadow-lg hover:shadow-lg/200 hover:bg-blue-700'>Submit</button>
+        </form>
       </div>
-      
     </div>
+  </>
   )
 }
 
