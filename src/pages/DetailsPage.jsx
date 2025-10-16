@@ -6,21 +6,18 @@ import { useQuery } from '@tanstack/react-query';
 
 
 function DetailsPage() {
-    // 1. Get the article ID (which is the article_id string) from the URL parameter
+    // using useparams hook to get the article id
     const { id } = useParams();
     const articleId = id || null; 
 
-    // 2. Use useQuery to get all data (leveraging the cache from HomePage)
+    // using usequery to fetch data
     const { data:results, isLoading, isError, error } = useQuery({
-        queryKey: ["results"], // Use the same key as HomePage to share cache
+        queryKey: ["results"], 
         queryFn: fetchTasks,
-        staleTime: 60 * 1000, 
+        staleTime: 60 * 1000*4,
+        cacheTime: 60*1000*5
     });
 
-    // const allArticles = data?.results;
-    
-    // 3. Find the specific article using the unique article_id (string comparison)
-    // We use && for short-circuiting: only run find() if allArticles exists.
     const result = results && results.find((r) => r.article_id === articleId);
 
     if (isLoading) {
@@ -38,15 +35,13 @@ function DetailsPage() {
                 <Navbar />
                 <div className="flex justify-center items-center max-w-3xl  p-10 text-xl text-red-700 mt-10 border border-red-300 bg-red-50 rounded-lg  mx-auto shadow-md">
                     <p className="mb-2 font-semibold w-full  ">Article not found.</p>
-                    {/* <p className="text-base text-gray-600">Please return to the <Link to="/" className="text-indigo-600 hover:underline">Home</Link>.</p> */}
                 </div>
             </div>
         );
     }
 
-    // 4. Render the details
     return (
-      <div className="min-h-screen bg-gray-400">
+      <div className="min-h-screen bg-gray-50">
             <Navbar />
             <div className="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-xl mt-8 mb-10 border border-gray-100">
                 <img 
@@ -69,9 +64,10 @@ function DetailsPage() {
                     {result.description}
                 </p>
                 
-                {/* Footer and Link */}
+                {/* Link to the main article */}
                 <div className="text-sm text-gray-500 border-t pt-4 flex justify-between items-center">
-                    <p>Published: {new Date(result.pubDate).toLocaleDateString()}</p>
+                    <p>Published: <span className='font-extrabold text-gray-900'>{new Date(result.pubDate).toLocaleDateString()}</span></p>
+                    <p>Author:<span className='font-extrabold text-gray-900'>{result.creator}</span></p>
                     <a 
                         href={result.link} 
                         target="_blank" 

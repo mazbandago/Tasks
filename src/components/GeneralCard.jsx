@@ -10,6 +10,7 @@ function GeneralCard({result}) {
       <div>
         <h2 className='text-2xl font-extrabold text-gray-700 mb-6'>{result.title}</h2>
         <p className='text-gray-400 text-xl mb-6  border-l-4 pl-3 border-blue-400 italic'>{result.description}</p>
+        <p>Published Date:<span className='font-extrabold text-gray-700'>{result.pubDate}</span></p>
       </div>
       </div>
     </Link> 
