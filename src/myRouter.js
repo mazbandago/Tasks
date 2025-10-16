@@ -4,12 +4,17 @@ import DetailsPage from "./pages/DetailsPage";
 import DashboardLayout from "./pages/DashboardLayout";
 import FootballPage from "./pages/FootballPage";
 import PoliticsPage from "./pages/PoliticsPage";
+import SignInForm from "./pages/SignInForm";
 
 
 const router = createBrowserRouter([
     {
         path:"/",
         Component: HomePage,
+    },
+    {
+        path:"/signinform",
+        Component:SignInForm
     },
     {
         path:"/Details/:id",
