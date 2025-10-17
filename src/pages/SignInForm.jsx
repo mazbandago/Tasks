@@ -13,7 +13,7 @@ function SignInForm() {
   const handleSubmit = async (e) =>{
     e.preventDefault();
     try {
-        const response = await fetch('https://mustapha.free.beeceptor.com/forms', {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
@@ -25,6 +25,7 @@ function SignInForm() {
 
       if (response.ok) {
       setFakeId(data.id); // Extract and store the fake ID
+      localStorage.setItem("isLoggedIn", "true");
       setMessage("Your form has been submitted successfully!");
       setFormData({ fullName: "", email: "", password: "" });
     } else {
@@ -44,7 +45,7 @@ function SignInForm() {
       <div className='p-4 mx-auto max-w-4xl'>
         <h2 className='mt-6 font-bold text-2xl text-gray-900 text-center'>ENTER YOUR DETAILS TO LOGIN</h2>
         {message && <p className="mt-4 text-center text-xl font-bold text-green-600">{message}</p>}
-        {fakeId && <p className="mt-2 text-center text-blue-600">Fake ID returned: {fakeId}</p>}
+        {fakeId && <p className="mt-2 text-center text-gray-900 text-xl font-bold">Fake ID returned: {fakeId}</p>}
         <form onSubmit={handleSubmit} className='flex flex-col border-0 mt-10 bg-white shadow-lg rounded-xl p-6'>
            <input type="text" name='fullName' value={formData.fullName} onChange={handleOnChange} required placeholder='Enter Your Full Name Here' className='p-3 border-1 mb-4 w-full rounded font-bold text-xl text-gray-900 focus:ring-gray-300 '/>
            <input type="email" name='email' value={formData.email} onChange={handleOnChange} required placeholder='Enter Your Email' className='p-3 border-1 mb-4 w-full rounded font-bold text-xl text-gray-900 focus:ring-gray-300 '/>
