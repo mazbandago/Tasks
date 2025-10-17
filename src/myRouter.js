@@ -6,11 +6,16 @@ import FootballPage from "./pages/FootballPage";
 import PoliticsPage from "./pages/PoliticsPage";
 import SignInForm from "./pages/SignInForm";
 import protectedRoute from "./pages/protectedRoute";
+import LandingPage from "./pages/LandingPage";
 
 
 const router = createBrowserRouter([
     {
         path:"/",
+        Component:LandingPage
+    },
+    {
+        path:"/generalnews",
         Component: HomePage,
     },
     {
