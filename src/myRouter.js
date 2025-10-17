@@ -5,6 +5,7 @@ import DashboardLayout from "./pages/DashboardLayout";
 import FootballPage from "./pages/FootballPage";
 import PoliticsPage from "./pages/PoliticsPage";
 import SignInForm from "./pages/SignInForm";
+import protectedRoute from "./pages/protectedRoute";
 
 
 const router = createBrowserRouter([
@@ -29,8 +30,13 @@ const router = createBrowserRouter([
                 Component:FootballPage,
             },
             {
-                path:"Politics",
-                Component:PoliticsPage,
+                Component:protectedRoute,
+                children:[
+                    {
+                        path:"politics",
+                        Component:PoliticsPage
+                    }
+                ]
             }
         ]
     }
