@@ -13,8 +13,6 @@ const{data:results, loading, error} = useQuery({
     cacheTime: 60 * 1000 * 10
    
 })
-// const results = data?.results;
-console.log(results)
   return (
     <div>
       <Navbar />
