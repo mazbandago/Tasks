@@ -14,7 +14,7 @@ function Clock() {
     },[])
   return (
     <div>
-        <p className='text-6xl text-white font-extrabold border rounded-xl rounded-t-none flex items-center justify-center mx-auto min-h-screen text-center bg-blue-300 hover:bg-blue-700 overflow-hidden cursor-pointer'>{time}</p>
+        <p className='text-6xl text-black font-extrabold border rounded-xl rounded-t-none flex items-center justify-center mx-auto min-h-screen text-center bg-gray-100 hover:bg-blue-300 overflow-hidden cursor-pointer'>{time}</p>
     </div>
   )
 }
