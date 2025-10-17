@@ -11,11 +11,11 @@ import LandingPage from "./pages/LandingPage";
 
 const router = createBrowserRouter([
     {
-        path:"/landingpage",
+        path:"/",
         Component:LandingPage
     },
     {
-        path:"/",
+        path:"/generalnews",
         Component: HomePage,
     },
     {
