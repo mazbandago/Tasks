@@ -2,7 +2,7 @@ import React from 'react'
 
 function PoliticsPage() {
   return (
-    <div>PoliticsPage</div>
+    <h1>This is the Politics page</h1>
   )
 }
 
