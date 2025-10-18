@@ -35,7 +35,7 @@ function PoliticsPage() {
                    rounded-4xl p-1 bg-black text-white shadow-lg/50 hover:bg-blue-700 sm:tex-sm '>Publish Date:{news.pubDate}</span>
                   </div>
                 <h2 className='text-2xl font-extrabold mb-4 text-gray-950 '>{news.title}</h2>
-                <p className='text-gray-900 font-semibold pl-3 border-l-blue-700 mb-6'>{news.description}</p> 
+                <p className='text-gray-900 font-semibold border-l-4 border-indigo-200 pl-4 italic mb-6'>{news.description}</p> 
                 <a href={news.source_url} target='_blank'className='border p-3 rounded bg-red-500 text-white font-bold shadow-lg hover:bg-blue-700 '>Detail News</a>
               </div>
             ))
