@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="bg-indigo-700 shadow-md p-4 rounded-t-2xl">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <Link to="/" className="text-white text-lg font-bold">MAZ.BANDAGO</Link>
+        <Link to="/" className="text-white text-lg font-bold">mazBANDAGO</Link>
 
         {/* Hamburger Icon */}
         <button
