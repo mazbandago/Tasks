@@ -13,8 +13,8 @@ function FootballPage() {
   const{data:results, isloading,error} = useQuery({
     queryKey: ["results"],
     queryFn: fetchTasks,
-    staleTime:1000*60*5,
-    cacheTime:1000*60*10
+    staleTime:1000*60*1,
+    cacheTime:1000*60*2
   })
 
   let filtered = results;

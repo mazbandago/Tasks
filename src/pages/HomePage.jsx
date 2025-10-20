@@ -9,8 +9,8 @@ function HomePage() {
 const{data:results, loading, error} = useQuery({
     queryKey: ["results"],
     queryFn: fetchTasks,
-    staleTime: 60 * 1000 * 5,
-    cacheTime: 60 * 1000 * 10
+    staleTime: 60 * 1000 * 1,
+    cacheTime: 60 * 1000 * 2
    
 })
   return (
